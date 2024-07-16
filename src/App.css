@@ -5,6 +5,17 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  text-transform: capitalize;
+  justify-content: space-between;
+}
+.weather_report{
+  background-image: url(./Assets/bg-image.jpg);
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
+}
+.bg-success{
+  border-radius: 8%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
