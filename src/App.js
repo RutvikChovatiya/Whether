@@ -36,30 +36,36 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h1>Weather App</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={city} onChange={handleCityChange} placeholder="Enter city" />
-        <button type="submit">Get Weather</button>
+    <div className='weather_report  align-content-center'>
+    <div className="container  p-5  px-5 bg-success d-flex  justify-content-center  align-items-center flex-column">
+    <div className='d-flex w-100 px-5 justify-content-center  justify-content-between'>
+      <h1 className='fs-5 fw-bold text-uppercase px-5 text-white'>Weather App</h1>
+      <form onSubmit={handleSubmit} className='d-flex align-content-space-between'>
+        <input className='form-control col-md me-2 fw-bold mx-5' type="text" value={city} onChange={handleCityChange} placeholder="Enter city" />
+        <button className="btn btn-outline-dark px-5 fs-5 fw-bold" type="submit">Get Weather</button>
       </form>
+      </div>
       {weather && (
-        <div>
+        <div className='text-center py-5 '>
           <h2>{weather.name}</h2>
           <p>Temperature: {weather.main && weather.main.temp}°C</p>
           <p>Humidity: {weather.main && weather.main.humidity}%</p>
           <p>Wind Speed: {weather.wind && weather.wind.speed} m/s</p>
-          <h2>7-Day Forecast</h2>
-          <ul>
-            {forecast.map((day, index) => (
-              <li key={index}>
-                <span>{new Date(day.dt * 1000).toLocaleDateString("en-US", { weekday: 'long' })}</span>
-                <span>{day.temp && day.temp.day}°C</span>
-                <span className="text-capitalize">{day.weather && day.weather[0].description}</span>
-              </li>
-            ))}
-          </ul>
+          <h2 className='py-5'>7-Day Forecast</h2>
+          <div className='d-flex justify-content-around row row-cols-2 g-4 '>
+                  {forecast.map((day, index) => (
+                    <div className='col-md-1'>
+                      <div key={index} className='d-flex flex-column align-items-center'>
+                        <span className='fw-bold fs-5'>{new Date(day.dt * 1000).toLocaleDateString("en-US", { weekday: 'long' })}</span>
+                        <span>{day.temp.day}°C</span>
+                        <span className='text-capitalize'>{day.weather[0].description}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
         </div>
       )}
+    </div>
     </div>
   )
 }
